@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MathPals - Problem</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<div id="avatarBackground" class="avatar-background"></div>
+<body data-page="problem">
+
+  <div id="avatarBackground" class="avatar-background"></div>
+
+  <div class="app-shell">
+    <main>
+      <section>
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+          <div class="stars" id="gameStars">★</div>
+          <div class="problem-title" id="gameDifficultyTitle">1 Star Difficulty</div>
+        </div>
+        <!-- functionality in JS -->
+        <div class="problem-box mb-3" id="problemText">
+          Question goes here
+        </div>
+        <div class="problem-stage">
+          <div class="row g-4 align-items-start">
+            <div class="col-lg-6">
+              <div class="apple-panel">
+                <div>
+                  <div id="feedbackArea"></div>
+                  <div class="apple-wrap" id="appleWrap"></div>
+                </div>
+
+                <!-- speaker button -->
+                <div class="speaker-row">
+                  <button class="speaker-box"
+                          type="button"
+                          onclick="speakProblem()"
+                          title="Read out loud">
+                    🔊
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="d-grid gap-5 mt-lg-5 pt-lg-3"
+                   id="answerButtons"></div>
+            </div>
+          </div>
+          <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+
+            <!-- skip button -->
+            <button class="dark-pill"
+                    type="button"
+                    onclick="nextProblem(false)">
+              Skip
+            </button>
+
+            <a class="dark-pill"
+               href="home.html"
+               onclick="stopSessionTimer()">
+              Back Home
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal fade result-modal"
+       id="resultModal"
+       tabindex="-1"
+       aria-hidden="true">
+
+    <!-- popup for result-->
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-body p-4 p-md-5">
+          <div id="resultCard" class="result-card">
+            <div id="resultTitle" class="result-title">
+              Correct!<br>Good Job!
+            </div>
+            <div id="resultStarsWrap" class="result-stars">
+              ★ ★ ★
+            </div>
+            <div class="d-flex justify-content-center gap-4 flex-wrap mt-5 pt-3">
+
+              <button id="resultHomeBtn"
+                      type="button"
+                      class="result-btn result-home"
+                      onclick="closeResultModalToHome()">
+                Home
+              </button>
+
+              <button id="resultActionBtn"
+                      type="button"
+                      class="result-btn result-next"
+                      onclick="handleResultAction()">
+                Next
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
