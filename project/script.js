@@ -340,8 +340,9 @@ function renderHistory() {
     [...profile.attempts].reverse().slice(0, 20).forEach(item => {
       const card = document.createElement('div');
       card.className = 'list-card';
-      card.innerHTML = `
       // render past attempt with prompt chosen answer correct or incorrect and time of attempt
+      card.innerHTML = `
+      
         <div class="d-flex justify-content-between flex-wrap gap-2">
           <strong>${item.prompt}</strong>
           <span class="${item.correct ? 'text-success' : 'text-warning'} fw-bold">
