@@ -39,7 +39,8 @@ function makeProfile(name, avatar) {
     timeTodaySec:0,
     timeWeekSec:0,
     muted:false,
-    backgroundAvatar:''
+    backgroundAvatar:'',
+    inSession:false
   };
 }
 
@@ -256,6 +257,7 @@ function renderGame() {
   setText('gameDifficultyTitle', `${problem.starLevel} Star Difficulty`);
   setText('gameStars', Array.from({ length: problem.starLevel }, () => '★').join(' '));
   setText('problemText', problem.prompt);
+  setText('profileStarCount', `⭐ ${profile.stars}`);
 
   const apples = document.getElementById('appleWrap');
   const answers = document.getElementById('answerButtons');
@@ -541,10 +543,10 @@ function startGame(diff) {
   }
 
   profile.difficulty = diff;
+  profile.inSession = true;
   state.lastDifficulty = diff;
 
   nextProblem(false);
-  startSessionTimer();
   saveState();
   navigate('problem.html');
 }
@@ -727,6 +729,12 @@ function closeResultModalToHome() {
   if (modal) {
     modal.hide();
   }
+
+  const profile = getCurrentProfile();
+  if (profile) {
+    profile.inSession = false;
+  }
+
   stopSessionTimer();
   navigate('home.html');
 }
@@ -904,6 +912,13 @@ function renderCurrentPage() {
     if (!state.currentProblem) {
       state.currentProblem = generateProblem(getCurrentProfile()?.difficulty || 'easy');
     }
+
+    const profile = getCurrentProfile();
+
+    if (profile?.inSession) {
+      startSessionTimer();
+    }
+
     renderGame();
   } else if (page === 'history') {
     renderHistory();

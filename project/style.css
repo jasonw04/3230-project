@@ -229,13 +229,18 @@ body {
   font-size: clamp(1.5rem, 3vw, 2.1rem);
 }
 
-
 .stars { 
   font-size:clamp(2.2rem,4vw,3.4rem); 
   letter-spacing:6px; 
   color:var(--gold); 
   line-height:1; 
 }
+
+.stars_label { 
+  font-size: 2.4rem;
+  font-weight: 800;
+}
+
 
 .problem-title { 
   font-size:clamp(2.2rem,4vw,3.3rem); 
