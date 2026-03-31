@@ -301,8 +301,14 @@ function renderGame() {
   problem.choices.forEach(choice => {
     const btn = document.createElement('button');
     btn.className = 'answer-btn';
-    btn.type = 'button';
-    btn.textContent = `${choice} ${choice === 1 ? 'Apple' : 'Apples'}`;
+    btn.innerHTML = `
+      <div style="font-size:2.5rem; line-height:1.2;">
+        ${'🍎'.repeat(choice)}
+      </div>
+      <div style="margin-top:8px; font-size:1.5rem;">
+        ${choice} ${choice === 1 ? 'Apple' : 'Apples'}
+      </div>
+    `;
     btn.onclick = () => answerProblem(choice);
     answers.appendChild(btn);
   });
@@ -644,7 +650,7 @@ function answerProblem(choice) {
   // if correct add star to profile and play correct sound and show correct result modal with feedback 
   // if incorrect play incorrect sound and show incorrect result modal with feedback
   if (correct) {
-    profile.stars += 1;
+    profile.stars += problem.starLevel;
     playSound(true);
     saveState();
     showResultModal(true);
@@ -884,7 +890,6 @@ function renderCurrentPage() {
 
   const page = document.body.dataset.page;
 
-  // 
   if (page === 'profiles') {
     renderProfiles();
     renderAvatarChoices();

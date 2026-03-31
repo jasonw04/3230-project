@@ -84,6 +84,7 @@ body {
 .profile-btn,
 .dark-pill,
 .result-btn { 
+  font-size: 2rem;
   border:none; 
   border-radius:16px; 
   color:#fff; 
@@ -107,10 +108,11 @@ body {
   transform:translateY(-1px); 
 }
 
-.big-tile { 
-  min-height:100px; 
-  width:100%; 
-  font-size:1.1rem; 
+.big-tile {
+  min-height: 140px;
+  width: 100%;
+  font-size: 2rem;
+  padding: 20px;
 }
 
 .tile-green { 
@@ -222,7 +224,7 @@ body {
   background: rgba(87, 177, 170, 0.98);
   width: 100%;
   min-height: 140px;
-  text-align: left;
+  text-align: center;
   padding: 20px 26px;
   font-size: clamp(1.5rem, 3vw, 2.1rem);
 }
