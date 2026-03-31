@@ -721,8 +721,6 @@ function closeResultModalToHome() {
   if (modal) {
     modal.hide();
   }
-
-  // stop timer
   stopSessionTimer();
   navigate('home.html');
 }
