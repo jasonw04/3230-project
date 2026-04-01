@@ -547,6 +547,26 @@ body {
   margin-bottom: 18px;
 }
 
+.apple-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.apple-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 200px;
+  justify-content: center;
+}
+
+.apple-symbol {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
 /* responsive */
 @media (max-width:991px) {
   .profile-row { 

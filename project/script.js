@@ -268,34 +268,39 @@ function renderGame() {
 
   apples.innerHTML = '';
 
-  const allApples = [];
+  apples.innerHTML = '';
 
-  // create apple objects for visualization based on problem type and numbers
-  if (problem.operation === '+') {
-    for (let i = 0; i < problem.first; i++) {
-      allApples.push({ kind:'normal' });
-    }
+  const group1 = document.createElement('div');
+  const symbol = document.createElement('div');
+  const group2 = document.createElement('div');
 
-    for (let i = 0; i < problem.second; i++) {
-      allApples.push({ kind:'add' });
-    }
-  } else {
-    for (let i = 0; i < problem.first - problem.second; i++) {
-      allApples.push({ kind:'normal' });
-    }
+  group1.className = 'apple-group';
+  group2.className = 'apple-group';
+  symbol.className = 'apple-symbol';
 
-    for (let i = 0; i < problem.second; i++) {
-      allApples.push({ kind:'eaten' });
-    }
+
+  symbol.textContent = problem.operation === '+' ? '➕' : '➖';
+
+  // display full apples
+  for (let i = 0; i < problem.first; i++) {
+    const apple = document.createElement('div');
+    apple.className = 'apple normal';
+    apple.textContent = '🍎';
+    group1.appendChild(apple);
   }
 
-  // render apple visualization for different types of apples based on the operation and numbers in the problem
-  allApples.forEach(item => {
+  // display added or eaten apples
+  for (let i = 0; i < problem.second; i++) {
     const apple = document.createElement('div');
-    apple.className = `apple ${item.kind}`;
-    apple.textContent = item.kind === 'eaten' ? '🍏' : '🍎';
-    apples.appendChild(apple);
-  });
+    apple.className = `apple ${problem.operation === '+' ? 'add' : 'eaten'}`;
+    apple.textContent = problem.operation === '+' ? '🍎' : '🍏';
+    group2.appendChild(apple);
+  }
+
+
+  apples.appendChild(group1);
+  apples.appendChild(symbol);
+  apples.appendChild(group2);
 
   answers.innerHTML = '';
 
