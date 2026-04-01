@@ -494,6 +494,13 @@ body {
   user-select: none;
 }
 
+.app-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
 .app-shell {
   max-width:1280px;
   margin:0 auto;
@@ -504,6 +511,7 @@ body {
   border-radius:16px;
   position:relative;
   z-index:1;
+  overflow: hidden;
 }
 
 .no-avatar-bg #avatarBackground {
